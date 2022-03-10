@@ -10,17 +10,18 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import ru.kata.spring.boot_security.demo.service.UserService;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
-    private final UserDetailsService userService;
+    private final UserService userService;
 
     private final SuccessUserHandler successUserHandler;
 
-    public WebSecurityConfig(PasswordEncoder passwordEncoder, UserDetailsService userService, SuccessUserHandler successUserHandler) {
+    public WebSecurityConfig(PasswordEncoder passwordEncoder, UserService userService, SuccessUserHandler successUserHandler) {
         this.passwordEncoder = passwordEncoder;
         this.userService = userService;
         this.successUserHandler = successUserHandler;
